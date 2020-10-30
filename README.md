@@ -22,10 +22,10 @@ note that everything  in binary
 
 the explanation is of the type
 
-name (lengthened name)(value, if necessary to load from special memory) <location>
+  name (lengthened name)(value, if necessary to load from special memory) <location>
 
-cont (continue)() 0b0000
-  do nothing
+  cont (continue)() 0b0000
+    do nothing
 
 screen commands
 
@@ -43,38 +43,38 @@ screen commands
     draw (draw)() 0b0100
       draw the  color on the screen at the intersection of the
 
-other commands
+other commands:
 
-jump (jump)(line) 0b0101
-  jump to (absolute) line <line>
+  jump (jump)(line) 0b0101
+    jump to (absolute) line <line>
 
-jpfz (jump if zero)(line) 0b0110
-  jump to line <line> if the main register contains zero
+  jpfz (jump if zero)(line) 0b0110
+    jump to line <line> if the main register contains zero
 
-jfnz (jump if not zero)(line) 0b0111
-  jump to line <line> if the main register does not contain zero
+  jfnz (jump if not zero)(line) 0b0111
+    jump to line <line> if the main register does not contain zero
 
-semr (set the main register)(value) 0b1000
-  set the main register to <value>
+  semr (set the main register)(value) 0b1000
+    set the main register to <value>
 
-rpnx (replace next)(reg) 0b1001
-  instead of the next instruction from special memory,
-  load it from the word in register reg
+  rpnx (replace next)(reg) 0b1001
+    instead of the next instruction from special memory,
+    load it from the word in register reg
 
-add (add)(value) 0b1010
-  add value to main register, and place it in the main register
+  add (add)(value) 0b1010
+    add value to main register, and place it in the main register
 
-sub (sub)(value) 0b1011
-  subtract value from main register, and place it in the main register
+  sub (sub)(value) 0b1011
+    subtract value from main register, and place it in the main register
 
-swir (switch register) (reg) 0b1100
-  set the main register to register <reg>
+  swir (switch register) (reg) 0b1100
+    set the main register to register <reg>
 
-band (boolean and) (value) 0b1101
-  boolean and value and main register together, putting the output into main register
+  band (boolean and) (value) 0b1101
+    boolean and value and main register together, putting the output into main register
 
-rplz (replace if zero)() 0b1110
-  if main register contains a value that is less than zero, replace it with zero
+  rplz (replace if zero)() 0b1110
+    if main register contains a value that is less than zero, replace it with zero
 
-rnxi (replace next instruction)(instruction) 0b1111 NOT IMPLEMENTED
-  replace the next instruction with instruction <instruction>
+  rnxi (replace next instruction)(instruction) 0b1111 NOT IMPLEMENTED
+    replace the next instruction with instruction <instruction>
