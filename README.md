@@ -1,5 +1,5 @@
 # Malefic
-A turing complete simulator
+A turing complete simulator <newline>
 M. A. L. E. F. I. C. (Miniature Assembly LanguagE For Internal Computing)
 
 MALEFIC utilizes a unusual type of machine language, and therefore a unusual assembly language
