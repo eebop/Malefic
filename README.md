@@ -37,7 +37,7 @@ screen commands
     sxlc (set x location)(x location) 0b0010
       set the x value of the screen pointer
 
-    sysc (set y location)(y location) 0b0011
+    sylc (set y location)(y location) 0b0011
       set the x value of the screen pointer
 
     draw (draw)() 0b0100
