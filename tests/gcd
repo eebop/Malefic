@@ -1,0 +1,41 @@
+swir 0
+semr 1011101
+swir 1
+semr 100011
+
+# begin recursive function to subtract lowest from highest and place it in highest
+
+swir 10
+rpnx 0
+semr
+rpnx 1
+sub
+jpfz 100101
+# Now's the tricky bit
+swir 11 #| copy the
+rpnx 10 #| value and
+semr    #| use abs
+abs     #| on one version
+
+swir 10    #| check
+rplz       #| if
+jfnz 11100 #| negative, and if so, jump to line 11100
+
+swir 1   #| same
+rpnx 11  #| as
+semr     #| down
+jump 111 #| there, but set a different regester
+
+# jump to here
+swir 0   #| see
+rpnx 11  #| five
+semr     #| lines
+jump 111 #| above
+
+# end function
+
+# print the answer
+
+rpnx 0
+log
+dump
