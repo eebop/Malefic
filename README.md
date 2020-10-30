@@ -24,8 +24,8 @@ the explanation is of the type
 
   name (lengthened name)(value, if necessary to load from special memory) <location>
 
-  cont (continue)() 0b0000
-    do nothing
+    cont (continue)() 0b0000
+      do nothing
 
 screen commands
 
