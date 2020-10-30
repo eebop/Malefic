@@ -13,9 +13,9 @@ All words are equivalent to one signed byte, and all programs are half a word lo
 The assembly language is in the format
 <command> <optional special memory value (in binary)> <optional comment>
 or
-\# <optional comment>
+\# \<optional comment\>
 or
-<newline>
+\<newline\>
 
 
 note that everything  in binary
