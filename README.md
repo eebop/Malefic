@@ -11,7 +11,7 @@ If a program calls for a word of special memory, it is pulled off the top of the
 All words are equivalent to one signed byte, and all programs are half a word long.
 
 The assembly language is in the format
-<command> <optional special memory value (in binary)> <optional comment>
+\<command\> \<optional special memory value (in binary)\> \<optional comment\>
 or
 \# \<optional comment\>
 or
@@ -22,7 +22,7 @@ note that everything  in binary
 
 the explanation is of the type
 
-  name (lengthened name)(value, if necessary to load from special memory) <location>
+  name (lengthened name)(value, if necessary to load from special memory) \<location\>
 
     cont (continue)() 0b0000
       do nothing
@@ -46,16 +46,16 @@ screen commands
 other commands:
 
     jump (jump)(line) 0b0101
-      jump to (absolute) line <line>
+      jump to (absolute) line \<line\>
 
     jpfz (jump if zero)(line) 0b0110
-      jump to line <line> if the main register contains zero
+      jump to line \<line\> if the main register contains zero
 
     jfnz (jump if not zero)(line) 0b0111
-      jump to line <line> if the main register does not contain zero
+      jump to line \<line\> if the main register does not contain zero
 
     semr (set the main register)(value) 0b1000
-      set the main register to <value>
+      set the main register to \<value\>
 
     rpnx (replace next)(reg) 0b1001
       instead of the next instruction from special memory,
@@ -68,7 +68,7 @@ other commands:
       subtract value from main register, and place it in the main register
 
     swir (switch register) (reg) 0b1100
-      set the main register to register <reg>
+      set the main register to register \<reg\>
 
     band (boolean and) (value) 0b1101
       boolean and value and main register together, putting the output into main register
@@ -76,5 +76,5 @@ other commands:
     rplz (replace if zero)() 0b1110
       if main register contains a value that is less than zero, replace it with zero
 
-    rnxi (replace next instruction)(instruction) 0b1111 NOT IMPLEMENTED
-      replace the next instruction with instruction <instruction>
+    rein (replace instruction)(instruction) 0b1111 NOT IMPLEMENTED
+      replace the instruction on line \<main reg\> with instruction \<instruction\>
