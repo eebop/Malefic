@@ -3,7 +3,7 @@ import time
 import pygame
 from gen_new_updated_file import gen_file, format_prog
 
-registers = [0] * 16
+registers = [0] * 128
 main_reg = 0
 where_in_regs = 0
 should_replace = False
