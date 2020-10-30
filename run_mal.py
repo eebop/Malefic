@@ -1,10 +1,4 @@
-'''
-the commands:
-sxsc = set x screen coordinate
-sysc = set x screen coordinate
-scol = set color
-draw = draw on screen
-'''
+
 
 import sys
 import time
@@ -16,6 +10,9 @@ where_in_regs = 0
 should_replace = False
 replace_with = None
 
+
+with open('data.py', 'r') as f:
+    commands_dict = eval(f.read())
 
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
