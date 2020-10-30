@@ -154,10 +154,11 @@ while True:
         loop_num += 1
         if loop_num == len(exe):
             break
-    except (TypeError, AttributeError) as e:
+    except AttributeError as e:
         if type(e) == type(TypeError()):
             raise UserProgramFailure(f'ERROR: Too few arguments\n\ndebug status:\n{"-"*10}\n{get_all.dumpr()}\n{"-"*10}')
-        #raise UserProgramFailure(f'')
+    except Exception:
+        raise UserProgramFailure('unknown error')
 
 
 input("prompt to end program...")
