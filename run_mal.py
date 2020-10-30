@@ -1,7 +1,7 @@
 import sys
 import time
 import pygame
-from gen_new_updated_file import gen_file
+from gen_new_updated_file import gen_file, format_prog
 
 registers = [0] * 16
 main_reg = 0
@@ -123,8 +123,8 @@ it contains {main_reg}.'''
         main_reg = 0 if main_reg < 0 else main_reg
         registers[where_in_regs] = main_reg
 
-    # def rnpc(self, instruction):
-    #     exe[loop_num + 1)][0] = commands[instruction]
+    def rein(self, instruction):
+        exe[main_reg][0] = commands_dict[instruction]
 
     def cont(self):
         pass
@@ -157,3 +157,5 @@ while True:
 
 
 input("prompt to end program...")
+
+gen_file(sys.argv[1], format_prog(exe))
