@@ -14,22 +14,22 @@ jpfz 100101
 # Now's the tricky bit
 swir 11 #| copy the
 rpnx 10 #| value and
-semr    #| use abs
-abs     #| on one version
+semr #| use abs
+abs #| on one version
 
-swir 10    #| check
-rplz       #| if
+swir 10 #| check
+rplz #| if
 jfnz 11100 #| negative, and if so, jump to line 11100
 
-swir 1   #| same
-rpnx 11  #| as
-semr     #| down
+swir 1 #| same
+rpnx 11 #| as
+semr #| down
 jump 111 #| there, but set a different regester
 
 # jump to here
-swir 0   #| see
-rpnx 11  #| five
-semr     #| lines
+swir 0 #| see
+rpnx 11 #| five
+semr #| lines
 jump 111 #| above
 
 # end function
