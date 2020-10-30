@@ -16,7 +16,6 @@ where_in_regs = 0
 should_replace = False
 replace_with = None
 
-commands =
 
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
@@ -128,8 +127,8 @@ it contains {main_reg}.'''
         main_reg = 0 if main_reg < 0 else main_reg
         registers[where_in_regs] = main_reg
 
-    def rnpc(self, instruction):
-        exe[loop_num + 1)][0] = commands[instruction]
+    # def rnpc(self, instruction):
+    #     exe[loop_num + 1)][0] = commands[instruction]
 
     def cont(self):
         pass
