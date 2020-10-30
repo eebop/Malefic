@@ -1,7 +1,7 @@
 import sys
 import time
 import pygame
-from gen_new_updated_file import gen_file
+from gen_new_updated_file import gen_file, format_prog
 
 registers = [0] * 16
 main_reg = 0
@@ -89,7 +89,7 @@ class basic_handler(Pygame_handler):
         registers[where_in_regs] = main_reg
 
     def dump(self): # for testing
-        return self.dumpr()
+        print(self.dumpr())
 
     def dumpr(self): # DO NOT USE IN SIM
         return f'''On line {loop_num}. The program is {len(exe)} lines long.
@@ -123,8 +123,8 @@ it contains {main_reg}.'''
         main_reg = 0 if main_reg < 0 else main_reg
         registers[where_in_regs] = main_reg
 
-    # def rnpc(self, instruction):
-    #     exe[loop_num + 1)][0] = commands[instruction]
+    def rein(self, instruction):
+        exe[main_reg][0] = commands_dict[instruction.zfill(4)]
 
     def cont(self):
         pass
@@ -146,14 +146,18 @@ while True:
                 if value and value[0].startswith('#'): # This shorts out if value is empty
                     value = []
                 getattr(get_all, program)(*value)
+        print('here')
         loop_num += 1
         if loop_num == len(exe):
             break
-    except AttributeError as e:
+    except TypeError as e:
         if type(e) == type(TypeError()):
             raise UserProgramFailure(f'ERROR: Too few arguments\n\ndebug status:\n{"-"*10}\n{get_all.dumpr()}\n{"-"*10}')
     except Exception:
         raise UserProgramFailure('unknown error')
+    get_all.dump()
 
 
 input("prompt to end program...")
+
+gen_file(sys.argv[1], format_prog(exe))
