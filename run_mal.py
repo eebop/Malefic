@@ -1,8 +1,7 @@
-
-
 import sys
 import time
 import pygame
+from gen_new_updated_file import gen_file
 
 registers = [0] * 16
 main_reg = 0
