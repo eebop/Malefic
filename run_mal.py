@@ -14,7 +14,7 @@ with open('data.py', 'r') as f:
     commands_dict = eval(f.read())
 
 pygame.init()
-screen = pygame.display.set_mode((400, 400))
+screen = pygame.display.set_mode((512, 512))
 
 with open(sys.argv[1], 'r') as f:
     txt = f.read()
@@ -44,7 +44,7 @@ class Pygame_handler:
         self.b = int(rgb[4:], 2) * 127
 
     def draw(self):
-        pygame.draw.rect(screen, (self.r, self.g, self.b), [self.sxscval*100, self.syscval*100, 100, 100])
+        pygame.gfxdraw.pixel(screen, (self.r, self.g, self.b), [self.sxscval*2, self.syscval*2, 2, 2])
         time.sleep(1)
         pygame.display.flip()
 
