@@ -90,7 +90,7 @@ class basic_handler(Pygame_handler):
 
     def sub(self, input):
         global main_reg
-        main_reg -= eight_bit_signed_integer(input, 2)
+        main_reg -= eight_bit_signed_integer(input)
         registers[where_in_regs] = main_reg
 
     def dump(self): # for testing
@@ -120,7 +120,7 @@ it contains {main_reg}.'''
 
     def band(self, value):
         global main_reg
-        main_reg = main_reg & int(value, 2)
+        main_reg = main_reg & eight_bit_signed_integer(value)
         registers[where_in_regs] = main_reg
 
     def rplz(self):

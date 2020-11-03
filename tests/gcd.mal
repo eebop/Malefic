@@ -1,7 +1,7 @@
 swir 0
-semr 1011101
+semr 110
 swir 1
-semr 100011
+semr 100
 
 # begin recursive function to subtract lowest from highest and place it in highest
 
@@ -15,7 +15,7 @@ jpfz 100101
 swir 11 #| copy the
 rpnx 10 #| value and
 semr #| use abs
-abs #| on one version
+band 10000000 #| on one version
 
 swir 10 #| check
 rplz #| if
