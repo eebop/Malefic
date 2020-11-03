@@ -30,6 +30,6 @@ class eight_bit_signed_integer:
         return self.value * other
 
     def __int__(self):
-        print('in __int__')
-        print(repr(self.value))
+        #print('in __int__')
+        #print(repr(self.value))
         return self.value

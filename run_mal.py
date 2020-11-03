@@ -72,6 +72,7 @@ class basic_handler(Pygame_handler):
         global should_replace
         global replace_with
         should_replace = True
+        print(int(eight_bit_signed_integer(reg)))
         shortened_value = bin(registers[int(eight_bit_signed_integer(reg))])[2:]
         replace_with = [shortened_value if not shortened_value.startswith('b') else '-' + shortened_value[1]]
         #print(replace_with)
