@@ -20,5 +20,16 @@ class eight_bit_signed_integer:
     def __str__(self):
         return str(self.value)
 
+    def __repr__(self):
+        return str(self)
+
     def __and__(self, other):
         return self.__class__(self.value & other.value)
+
+    def __mul__(self, other):
+        return self.value * other
+
+    def __int__(self):
+        print('in __int__')
+        print(repr(self.value))
+        return self.value

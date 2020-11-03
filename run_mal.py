@@ -2,6 +2,7 @@ import sys
 import time
 import pygame
 from gen_new_updated_file import gen_file, format_prog
+from eight_bit import eight_bit_signed_integer
 
 registers = [0] * 128
 main_reg = 0
@@ -32,16 +33,16 @@ class Pygame_handler:
         self.syscval = -1
 
     def sxlc(self, value):
-        self.sxscval = int(value, 2)
+        self.sxscval = eight_bit_signed_integer(value)
 
     def sylc(self, value):
-        self.syscval = int(value, 2)
+        self.syscval = eight_bit_signed_integer(value)
 
     def scol(self, color):
         rgb = str(color)
-        self.r = int(rgb[:2], 2) * 127
-        self.g = int(rgb[2:4], 2) * 127
-        self.b = int(rgb[4:], 2) * 127
+        self.r = eight_bit_signed_integer(rgb[:2]) * 127
+        self.g = eight_bit_signed_integer(rgb[2:4]) * 127
+        self.b = eight_bit_signed_integer(rgb[4:]) * 127
 
     def draw(self):
         pygame.gfxdraw.pixel(screen, (self.r, self.g, self.b), [self.sxscval*2, self.syscval*2, 2, 2])
@@ -52,7 +53,7 @@ class basic_handler(Pygame_handler):
     def jump(self, loc):
         global loop_num
         #print(f'jumping to line {loc}')
-        loop_num = int(loc, 2) - 1 # minus one is because of the plus one at the bottom of the while loop
+        loop_num = eight_bit_signed_integer(loc) - 1 # minus one is because of the plus one at the bottom of the while loop
 
     def jpfz(self, loc):
         if main_reg == 0:
@@ -64,14 +65,14 @@ class basic_handler(Pygame_handler):
 
     def semr(self, input):
         global main_reg
-        main_reg = int(input, 2)
+        main_reg = eight_bit_signed_integer(input)
         registers[where_in_regs] = main_reg
 
     def rpnx(self, reg):
         global should_replace
         global replace_with
         should_replace = True
-        shortened_value = bin(registers[int(reg, 2)])[2:]
+        shortened_value = bin(registers[int(eight_bit_signed_integer(reg))])[2:]
         replace_with = [shortened_value if not shortened_value.startswith('b') else '-' + shortened_value[1]]
         #print(replace_with)
 
@@ -80,12 +81,12 @@ class basic_handler(Pygame_handler):
 
     def add(self, input):
         global main_reg
-        main_reg += int(input, 2)
+        main_reg += eight_bit_signed_integer(input)
         registers[where_in_regs] = main_reg
 
     def sub(self, input):
         global main_reg
-        main_reg -= int(input, 2)
+        main_reg -= eight_bit_signed_integer(input, 2)
         registers[where_in_regs] = main_reg
 
     def dump(self): # for testing
