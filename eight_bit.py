@@ -3,9 +3,6 @@ import traceback
 
 class eight_bit_signed_integer:
     def __init__(self, input, IsBin=True):
-        print(type(input), IsBin)
-        if type(input) == type(self):
-            print(traceback.print_stack())
         if IsBin:
             # input is a binary
             multaplier = 1
@@ -16,6 +13,13 @@ class eight_bit_signed_integer:
             self.value = int(input[-7:], 2) * multaplier
         else:
             self.value = input
+
+    def __xor__(self, other):
+        if hasattr(other, "value"):
+            return self.__class__(self.value ^ other.value, False)
+        else:
+            return self.__class__(self.value ^ other, False)
+
     def __add__(self, other):
         if hasattr(other, "value"):
             return self.__class__(self.value + other.value, False)

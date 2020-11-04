@@ -1,6 +1,7 @@
 import sys
 import time
 import pygame
+import data
 from gen_new_updated_file import gen_file, format_prog
 from eight_bit import eight_bit_signed_integer
 
@@ -11,8 +12,7 @@ should_replace = False
 replace_with = None
 
 
-with open('data.py', 'r') as f:
-    commands_dict = eval(f.read())
+commands_dict = data.data
 
 pygame.init()
 screen = pygame.display.set_mode((512, 512))
@@ -134,6 +134,11 @@ it contains {main_reg}.'''
     def cont(self):
         pass
 
+    def xor(self, value):
+        global main_reg
+        main_reg = main_reg ^ eight_bit_signed_integer(value)
+        registers[where_in_regs] = main_reg
+
 get_all = basic_handler()
 
 loop_num = 0
@@ -162,4 +167,4 @@ while True:
 
 input("prompt to end program...")
 
-gen_file(sys.argv[1], format_prog(exe))
+gen_file(txt, format_prog(exe), sys.argv[1])

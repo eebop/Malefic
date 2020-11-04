@@ -15,7 +15,7 @@ jpfz 100101
 swir 11 #| copy the
 rpnx 10 #| value and
 semr #| use abs
-band 10000000 #| on one version
+xor 10000000 #| on one version
 
 swir 10 #| check
 rplz #| if
