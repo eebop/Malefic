@@ -4,7 +4,7 @@ import pygame
 from gen_new_updated_file import gen_file, format_prog
 from eight_bit import eight_bit_signed_integer
 
-registers = [0] * 128
+registers = [eight_bit_signed_integer('0')] * 128
 main_reg = 0
 where_in_regs = 0
 should_replace = False
@@ -77,7 +77,7 @@ class basic_handler(Pygame_handler):
         #print(registers[int(eight_bit_signed_integer(reg))])
         #print(bin(registers[int(eight_bit_signed_integer(reg))])[2:])
         shortened_value = bin(registers[int(eight_bit_signed_integer(reg))])[2:]
-        replace_with = [shortened_value if not shortened_value.startswith('b') else '-' + shortened_value[1]]
+        replace_with = [shortened_value if not shortened_value.startswith('b') else '-' + shortened_value[1:]]
         #print(replace_with)
 
     def log(self, input): # Doesn't count; only for testing.
@@ -120,7 +120,7 @@ it contains {main_reg}.'''
 
     def band(self, value):
         global main_reg
-        main_reg = main_reg & eight_bit_signed_integer(value)
+        main_reg = main_reg & eight_bit_signed_integer(value) #main_reg is a eight_bit_signed_integer
         registers[where_in_regs] = main_reg
 
     def rplz(self):
@@ -155,11 +155,8 @@ while True:
         loop_num += 1
         if loop_num == len(exe):
             break
-    except TypeError as e:
-        if type(e) == type(TypeError()):
-            raise UserProgramFailure(f'ERROR: Too few arguments\n\ndebug status:\n{"-"*10}\n{get_all.dumpr()}\n{"-"*10}')
     except Exception:
-        raise UserProgramFailure('unknown error')
+        raise UserProgramFailure(f'ERROR:\n\ndebug status:\n{"-"*10}\n{get_all.dumpr()}\n{"-"*10}')
     #get_all.dump()
 
 

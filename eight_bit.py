@@ -1,7 +1,11 @@
 from operator import gt, ge, eq, le, lt
+import traceback
 
 class eight_bit_signed_integer:
     def __init__(self, input, IsBin=True):
+        print(type(input), IsBin)
+        if type(input) == type(self):
+            print(traceback.print_stack())
         if IsBin:
             # input is a binary
             multaplier = 1
@@ -26,15 +30,20 @@ class eight_bit_signed_integer:
     def __str__(self):
         return str(self.value)
     def __repr__(self):
-        return str(self)
+        return 'eight_bit_signed_integer(' + str(self) + ')' + ('' if self.value.__class__ == int else 'ERR')
     def __and__(self, other):
-        return self.__class__(self.value & other.value)
+        print(self.value, other)
+        if hasattr(other, "value"):
+            return self.__class__(self.value & other.value, False)
+        return self.__class__(self.value & other, False)
     def __mul__(self, other):
         return self.value * other
     def __int__(self):
         #print('in __int__')
         #print(repr(self.value))
         return self.value
+
+
     def __index__(self):
         return int(self)
 
